@@ -1,0 +1,41 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <title>Outkit Examples: Component</title>
+    <link rel="stylesheet" type="text/css" href="../assets/examples.css">
+</head>
+
+<body>
+    <div id="controls">
+        <p>Position</p>
+        <button onclick="tl()">Top left</button>
+        <button onclick="tr()">Top right</button>
+        <button onclick="br()">Bottom right</button>
+        <button onclick="bl()">Bottom left</button><br>
+        <p>Size</p>
+        <button onclick="fill()">Fill</button>
+        <button onclick="shrink()">Shrink</button>
+        <p>Que Animations</p>
+        <button onclick="a1()">Animate #1</button>
+        <button onclick="a2()">Animate #2</button>
+        <button onclick="a3()">Animate #3</button>
+        <button onclick="a4()">Animate #4</button><br>
+    </div>
+
+    <div id="component"></div>
+
+    <div id="content">
+        <h1>Component</h1>
+        <p class="big">A component is an HTML element that stores its state.  When a component's state changes, and it is rendered, it will
+            animate any animateable properties and simply set the rest.
+        </p>
+
+        <p>This page 
+    </div>
+
+    <script src="../../dist/outkit.js" type="text/javascript"></script>
+    <script src="component.js" type="text/javascript"></script>
+</body>
+
+</html>
