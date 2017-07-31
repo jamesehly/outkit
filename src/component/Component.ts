@@ -14,6 +14,7 @@ export interface IComponent {
     getChild(): IComponent;
     getRoot(): IComponent;
     setParent(parent: IComponent): this;
+    render(newState: State): Promise<any>;
 }
 
 export class Component implements IComponent {

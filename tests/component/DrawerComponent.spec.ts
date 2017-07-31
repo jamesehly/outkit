@@ -22,24 +22,26 @@ describe('DrawerComponent Tests (default options)', () => {
         sut.relay('init');
     });
 
-    it('should open (turn on)', () => {
+    it('should open (turn on)', (done) => {
         //Act
         sut.on().then((state) => {
             expect(state.style.left).toBe('0');
+            done();
         });
     }); 
 
-    it('should not close (turn off) if it has not been opened', () => {
+    it('should not close (turn off) if it has not been opened', (done) => {
         //Act
         sut.off()
             .then((state) => {
                 expect(state.style.left).toBe('-280px');
+                done();
             }).catch((err) => {
                 console.error(err.stack);
             });
     });
 
-    it('should not close (turn off) if it has been opened', () => {
+    it('should not close (turn off) if it has been opened', (done) => {
         //Act
         sut.on()
             .then((state) => {
@@ -48,26 +50,29 @@ describe('DrawerComponent Tests (default options)', () => {
             })
             .then((state) => {
                 expect(state.style.left).toBe('-280px');
+                done();
             }).catch((err) => {
                 console.error(err.stack);
             });
     });
 
-    it('should open via relay message (turn on)', () => {
+    it('should open via relay message (turn on)', (done) => {
         //Act
         sut.relay('on')
             .then((state) => {
                 expect(state[0].style.left).toBe('0');
+                done();
             }).catch((err) => {
                 console.error(err.stack);
             });;
     });
 
-    it('should close (turn off)', () => {
+    it('should close (turn off)', (done) => {
         //Act
         sut.relay('off')
             .then((state) => {
                 expect(state[0].style.left).toBe('-280px');
+                done();
             })
             .catch((err) => {
                 console.error(err.stack);
