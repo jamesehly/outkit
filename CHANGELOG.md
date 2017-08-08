@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/jamesehly/outkit/compare/v0.1.1...v0.1.2) (2017-08-08)
+
+
+### Bug Fixes
+
+* fix bug step function for animating pixel dimensions ([e9b3344](https://github.com/jamesehly/outkit/commit/e9b3344))
+
+
+
 <a name="0.1.1"></a>
 ## 0.1.1 (2017-07-31)
 
