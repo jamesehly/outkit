@@ -1,7 +1,7 @@
 export declare class State {
-    okClassName: string;
-    stateClassName: string;
-    style: {
+    okClassName?: string;
+    stateClassName?: string;
+    style?: {
         height?: string;
         width?: string;
         overflow?: string;

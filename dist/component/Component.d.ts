@@ -11,6 +11,7 @@ export interface IComponent {
     getChild(): IComponent;
     getRoot(): IComponent;
     setParent(parent: IComponent): this;
+    render(newState: State): Promise<any>;
 }
 export declare class Component implements IComponent {
     private _element;
