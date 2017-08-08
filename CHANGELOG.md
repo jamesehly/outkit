@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.4"></a>
+## [0.1.4](https://github.com/jamesehly/outkit/compare/v0.1.3...v0.1.4) (2017-08-08)
+
+
+### Bug Fixes
+
+* add build step before release step ([acdda68](https://github.com/jamesehly/outkit/commit/acdda68))
+
+
+
 <a name="0.1.3"></a>
 ## [0.1.3](https://github.com/jamesehly/outkit/compare/v0.1.2...v0.1.3) (2017-08-08)
 
