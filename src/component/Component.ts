@@ -197,7 +197,7 @@ export class Component implements IComponent {
 
             if (isFinite(nsv) && isFinite(osv)) {
                 let value = (nsv - osv) * delta + osv + '';
-                if (!isFinite(ns) && ns.match(/px$/))
+                if ((!isFinite(ns) && ns.match(/px$/)) || (!isFinite(os) && os.match(/px$/))) 
                     value = `${value}px`;
                 this._element.style[name] = value;
             }
