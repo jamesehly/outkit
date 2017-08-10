@@ -6,6 +6,7 @@ export interface IComponent {
     registerEvent(name: string, func?: Function): this;
     setElement(element: HTMLElement): this;
     getElement(): HTMLElement;
+    getAnimator(): IAnimator;
     addChild(component: IComponent): this;
     removeChild(component: IComponent): this;
     getChild(): IComponent;
@@ -26,6 +27,7 @@ export declare class Component implements IComponent {
     constructor(logger: ILogger, animator?: IAnimator);
     getElement(): HTMLElement;
     setElement(element: HTMLElement): this;
+    getAnimator(): IAnimator;
     addChild(component: IComponent): this;
     removeChild(component: IComponent): this;
     getChild(): IComponent;

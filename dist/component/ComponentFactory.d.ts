@@ -5,5 +5,7 @@ export declare class ComponentFactory {
     overlay(element: string): IComponent;
     window(element: string): IComponent;
     draggable(element: string): IComponent;
+    hlayout(element: string): IComponent;
+    vlayout(element: string): IComponent;
     private getElement(query);
 }
