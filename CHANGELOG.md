@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/jamesehly/outkit/compare/v0.1.4...v0.2.0) (2017-08-10)
+
+
+### Bug Fixes
+
+* change build step to be after versioning ([35b0a9b](https://github.com/jamesehly/outkit/commit/35b0a9b))
+
+
+### Features
+
+* add vertical layout component ([e346beb](https://github.com/jamesehly/outkit/commit/e346beb))
+
+
+
 <a name="0.1.4"></a>
 ## [0.1.4](https://github.com/jamesehly/outkit/compare/v0.1.3...v0.1.4) (2017-08-08)
 
