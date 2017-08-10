@@ -5,6 +5,8 @@ import { DrawerComponent } from "./DrawerComponent";
 import { OverlayComponent } from "./OverlayComponent";
 import { WindowComponent } from "./WindowComponent";
 import { DraggableComponent } from "./DraggableComponent";
+import { HorizontalLayoutComponent } from "./HorizontalLayoutComponent";
+import { VerticalLayoutComponent } from "./VerticalLayoutComponent";
 
 export class ComponentFactory {
 
@@ -38,6 +40,20 @@ export class ComponentFactory {
 
     draggable(element: string): IComponent {
         let component = new DraggableComponent(new Logger(), new StandardAnimator())
+        component.setElement(this.getElement(element));
+        component.init();
+        return component;
+    }
+
+    hlayout(element: string): IComponent {
+        let component = new HorizontalLayoutComponent(new Logger())
+        component.setElement(this.getElement(element));
+        component.init();
+        return component;
+    }
+
+    vlayout(element: string): IComponent {
+        let component = new VerticalLayoutComponent(new Logger())
         component.setElement(this.getElement(element));
         component.init();
         return component;

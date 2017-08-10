@@ -1,4 +1,4 @@
-import { HorizontalLayoutComponent } from "../../src/component/HorizontalLayoutComponent";
+import { VerticalLayoutComponent } from "../../src/component/VerticalLayoutComponent";
 import StandardAnimator from "../../src/animator/StandardAnimator";
 import { State } from "../../src/state/State";
 import Logger from "../../src/util/Logger";
@@ -8,8 +8,8 @@ if (!window['Promise']) {
     window['Promise'] = Promise;
 }
 
-describe('HorizontalLayoutComponent Tests', () => {
-    let sut: HorizontalLayoutComponent;
+describe('VerticalLayoutComponent Tests', () => {
+    let sut: VerticalLayoutComponent;
     let c1: HTMLElement;
     let c2: HTMLElement;
     let c3: HTMLElement;
@@ -30,7 +30,7 @@ describe('HorizontalLayoutComponent Tests', () => {
         re.appendChild(c3);
 
         // System under test  
-        sut = new HorizontalLayoutComponent(new Logger(), new StandardAnimator());
+        sut = new VerticalLayoutComponent(new Logger(), new StandardAnimator());
         sut.setElement(re);
     });
 
@@ -40,8 +40,8 @@ describe('HorizontalLayoutComponent Tests', () => {
 
     it('should add each child element as a component and have fluid children', (done) => {
         //Arrange
-        pe.style.width = '1000px';
-        pe.style.height = '500px';
+        pe.style.width = '500px';
+        pe.style.height = '1000px';
 
         //Act
         sut.relay('init').then(() => {
@@ -54,21 +54,21 @@ describe('HorizontalLayoutComponent Tests', () => {
             expect(children[1].getElement().id).not.toBeNull();
             expect(children[2].getElement().id).not.toBeNull();
 
-            expect(children[0].getElement().getBoundingClientRect().width).toBeCloseTo(pe.offsetWidth / children.length, 1);
-            expect(children[1].getElement().getBoundingClientRect().width).toBeCloseTo(pe.offsetWidth / children.length, 1);
-            expect(children[2].getElement().getBoundingClientRect().width).toBeCloseTo(pe.offsetWidth / children.length, 1);
+            expect(children[0].getElement().getBoundingClientRect().height).toBeCloseTo(pe.offsetHeight / children.length, 1);
+            expect(children[1].getElement().getBoundingClientRect().height).toBeCloseTo(pe.offsetHeight / children.length, 1);
+            expect(children[2].getElement().getBoundingClientRect().height).toBeCloseTo(pe.offsetHeight / children.length, 1);
 
-            expect(children[0].getElement().offsetHeight).toBeCloseTo(500, 1);
-            expect(children[1].getElement().offsetHeight).toBeCloseTo(500, 1);
-            expect(children[2].getElement().offsetHeight).toBeCloseTo(500, 1);
+            expect(children[0].getElement().offsetWidth).toBeCloseTo(500, 1);
+            expect(children[1].getElement().offsetWidth).toBeCloseTo(500, 1);
+            expect(children[2].getElement().offsetWidth).toBeCloseTo(500, 1);
             done();
         })
     });
 
     it('should set up a holy grail layout', (done) => {
         //Arrange
-        pe.style.width = '1000px';
-        pe.style.height = '500px';
+        pe.style.width = '500px';
+        pe.style.height = '1000px';
 
         c1.setAttribute('data-size', '100px');
         c3.setAttribute('data-size', '100px');
@@ -76,13 +76,13 @@ describe('HorizontalLayoutComponent Tests', () => {
         //Act
         sut.relay('init').then(() => {
             let children = sut.getChildren();
-            expect(children[0].getElement().offsetWidth).toBe(100);
-            expect(children[1].getElement().offsetWidth).toBe(800);
-            expect(children[2].getElement().offsetWidth).toBe(100);
+            expect(children[0].getElement().offsetHeight).toBe(100);
+            expect(children[1].getElement().offsetHeight).toBe(800);
+            expect(children[2].getElement().offsetHeight).toBe(100);
 
-            expect(children[0].getElement().offsetHeight).toBeCloseTo(500, 1);
-            expect(children[1].getElement().offsetHeight).toBeCloseTo(500, 1);
-            expect(children[2].getElement().offsetHeight).toBeCloseTo(500, 1);
+            expect(children[0].getElement().offsetWidth).toBeCloseTo(500, 1);
+            expect(children[1].getElement().offsetWidth).toBeCloseTo(500, 1);
+            expect(children[2].getElement().offsetWidth).toBeCloseTo(500, 1);
             done();
         })
     });

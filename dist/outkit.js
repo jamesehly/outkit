@@ -1,4 +1,4 @@
-/*! Outkit v0.1.2 - Copyright 2017 James Ehly - MIT License */
+/*! Outkit v0.1.3 - Copyright 2017 James Ehly - MIT License */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();

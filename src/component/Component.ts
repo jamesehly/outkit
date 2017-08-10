@@ -9,6 +9,7 @@ export interface IComponent {
     registerEvent(name: string, func?: Function): this;
     setElement(element: HTMLElement): this;
     getElement(): HTMLElement;
+    getAnimator(): IAnimator;
     addChild(component: IComponent): this;
     removeChild(component: IComponent): this;
     getChild(): IComponent;
@@ -33,7 +34,10 @@ export class Component implements IComponent {
         this._logger = logger;
         this._animator = animator;
         this._state = null;
-        if (this._animator !== null) {
+        if (typeof this._animator !== 'undefined' && 
+            this._animator !== null &&
+            typeof this._animator.setStep !== 'undefined' &&
+            typeof this._animator.setStep === 'function') {
             this._animator.setStep(this.step);
         }
     }
@@ -45,6 +49,10 @@ export class Component implements IComponent {
     setElement(element: HTMLElement): this {
         this._element = element;
         return this;
+    }
+
+    getAnimator(): IAnimator {
+        return this._animator;
     }
 
     addChild(component: IComponent): this {

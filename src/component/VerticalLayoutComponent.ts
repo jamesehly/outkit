@@ -7,7 +7,7 @@ import { ComponentFactory } from "./ComponentFactory";
 import ElementHelper from "../util/ElementHelper";
 import { State } from "../state/State";
 
-export class HorizontalLayoutComponent extends Composite {
+export class VerticalLayoutComponent extends Composite {
 
     private fixedChildren: Array<IComponent>;
     private perctChildren: Array<IComponent>;
@@ -23,11 +23,17 @@ export class HorizontalLayoutComponent extends Composite {
         this.registerEvent('init', () => { return this.init() });
     }
 
+    /**
+     * Initialize the Vertical Layout
+     * For each child element in elements, set up a new Component figure 
+     * out if it has a height set as a pixel value (fixed child), a 100%
+     * value (fluid child), or a value set to a specific percentage 
+     * (percentage child)
+     * 
+     * @returns 
+     * @memberof VerticalLayoutComponent
+     */
     init() {
-        // For each child element in elements, set up a new Component figure 
-        // out if it has a width set as a pixel value (fixed child), a 100%
-        // value (fluid child), or a value set to a specific percentage 
-        // (percentage child)
         let el = this.getElement();
         let factory = new ComponentFactory();
         for (let i = 0; i < el.children.length; i++) {
@@ -46,7 +52,7 @@ export class HorizontalLayoutComponent extends Composite {
             else {
                 this.fixedChildren.push(childComponent);
             }
-            childComponent.render({ style: { height: '100%', width: size, float: 'left' } })
+            childComponent.render({ style: { width: '100%', height: size, overflow: 'hidden', float: 'left' } })
             this.addChild(childComponent);
         }
 
@@ -57,12 +63,15 @@ export class HorizontalLayoutComponent extends Composite {
         state.style.height = this.getElement().parentElement.offsetHeight + 'px';
         state.style.width = this.getElement().parentElement.offsetWidth + 'px';
         state.style.display = "block";
+        state.style.overflow = "hidden";
+        state.style.float = "left"
         return this.render(state);
     }
 
     resize() {
         let state = new State();
         state.style.height = this.getElement().parentElement.offsetHeight + 'px';
+        console.log(document.body.offsetHeight)
         state.style.width = this.getElement().parentElement.offsetWidth + 'px';
         return this.render(state);
     }
@@ -71,24 +80,24 @@ export class HorizontalLayoutComponent extends Composite {
         let promises = [];
         promises.push(super.render(newState));
 
-        var totalWidth = this.getElement().offsetWidth;
-        var fluidWidth = totalWidth;
         var totalHeight = this.getElement().offsetHeight;
+        var fluidHeight = totalHeight;
+        var totalWidth = this.getElement().offsetWidth;
 
         // Draw the fixed children
         for (let el of this.fixedChildren) {
-            fluidWidth -= el.getElement().offsetWidth;
+            fluidHeight -= el.getElement().offsetHeight;
         }
         // Draw the percentage children
         for (let el of this.perctChildren) {
-            let width = (parseFloat(el.getElement().getAttribute('data-size')) / 100 * fluidWidth);
-            fluidWidth -= width;
-            el.render({ style: { width: width + 'px' } });
+            let height = (parseFloat(el.getElement().getAttribute('data-size')) / 100 * fluidHeight);
+            fluidHeight -= height;
+            el.render({ style: { height: height + 'px' } });
         }
         // Draw the fluid children
         for (let el of this.fluidChildren) {
-            var width = fluidWidth / this.fluidChildren.length;
-            promises.push(el.render({ style: { width: width + 'px' } }));
+            var height = fluidHeight / this.fluidChildren.length;
+            promises.push(el.render({ style: { height: height + 'px' } }));
         }
         return Promise.all(promises);
     }
