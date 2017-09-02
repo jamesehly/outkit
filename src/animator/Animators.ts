@@ -3,6 +3,17 @@ export interface IAnimator {
     setStep(step: Function): this;
     setDuration(duration: number): this;
     setRate(rate: number): this;
+    setTransition(transition: AnimatorTransition);
+}
+
+export enum AnimatorTransition {
+    Linear,
+    EaseIn,
+    EaseOut,
+    EaseInOut,
+    PullIn,
+    PushOut,
+    PushPull
 }
 
 export * from './StandardAnimator';

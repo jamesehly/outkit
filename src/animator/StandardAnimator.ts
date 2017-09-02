@@ -145,14 +145,4 @@ export default class StandardAnimator implements IAnimator {
                 return (2 - timing(2 * (1 - progress))) / 2;
         }
     }
-}
-
-export enum AnimatorTransition {
-    Linear,
-    EaseIn,
-    EaseOut,
-    EaseInOut,
-    PullIn,
-    PushOut,
-    PushPull
-}
+} 
