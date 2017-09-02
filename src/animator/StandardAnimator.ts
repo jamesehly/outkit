@@ -1,4 +1,4 @@
-import { IAnimator } from './Animators';
+import { IAnimator, AnimatorTransition } from './Animators';
 
 /**
  * Outkit's Animator Class
