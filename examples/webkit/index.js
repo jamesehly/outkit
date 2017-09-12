@@ -1,4 +1,5 @@
 import { ComponentFactory } from '../../dist/outkit';
+import { OutkitAnimator, AnimatorTransition } from 'outkit-animator';
 
 var ok = new ComponentFactory();
 
@@ -21,10 +22,23 @@ document.body.appendChild(el.drawer);
 
 var comp = {};
 comp.overlay = ok.overlay('#overlay');
-comp.drawer = ok.drawer('#drawer', {overlay: comp.overlay});
+comp.drawer = ok.drawer('#drawer');
+comp.drawer.addChild(comp.overlay);
 
-comp.drawer.open();
+comp.drawer.relay('on');
 
 setTimeout(function() {
-    comp.overlay.off();
+    comp.drawer.relay('off');
 }, 3000);
+
+const animator = new OutkitAnimator();
+animator
+    .setDuration(500)
+    .setTransition(AnimatorTransition.EaseOut)
+    .setRate(16)
+    .setStep((x, y, z) => {
+        console.log(x, y[0], y[1]);
+    })
+
+
+animator.animate(Date.now, 'Hello World!', 123);
