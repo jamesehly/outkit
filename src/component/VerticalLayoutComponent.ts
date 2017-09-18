@@ -1,7 +1,7 @@
 import { Composite } from "./Composite";
 import { ILogger } from "../util/Logger";
 import Logger from "../util/Logger";
-import { IAnimator } from "../animator/Animators";
+import { IAnimator } from 'outkit-animator';
 import { IComponent, Component } from "./Component";
 import { ComponentFactory } from "./ComponentFactory";
 import ElementHelper from "../util/ElementHelper";

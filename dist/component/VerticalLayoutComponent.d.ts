@@ -1,6 +1,6 @@
 import { Composite } from "./Composite";
 import { ILogger } from "../util/Logger";
-import { IAnimator } from "../animator/Animators";
+import { IAnimator } from 'outkit-animator';
 import { State } from "../state/State";
 export declare class VerticalLayoutComponent extends Composite {
     private fixedChildren;

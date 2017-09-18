@@ -1,7 +1,6 @@
+var PACKAGE = require('./package.json');
 var path = require('path');
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var PACKAGE = require('./package.json');
 
 module.exports = {
     entry: {
@@ -25,18 +24,10 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.BannerPlugin("Outkit v" + PACKAGE.version + " - Copyright 2017" + (new Date().getFullYear() !== 2017 ? "-" +  new Date().getFullYear() : "")  +" James Ehly - MIT License"),
+        new webpack.BannerPlugin("Outkit v" + PACKAGE.version + " - Copyright 2017" + (new Date().getFullYear() !== 2017 ? "-" + new Date().getFullYear() : "") + " James Ehly - MIT License"),
         new webpack.SourceMapDevToolPlugin({
             filename: null, // if no value is provided the sourcemap is inlined
             test: /\.(ts|js)($|\?)/i // process .js and .ts files only
         })
-    ],
-    // Development options...
-    devtool: "source-map",
-    devServer: {
-        compress: true,
-        port: 9000,
-        watchContentBase: true,
-        inline: true
-    }
+    ]
 };

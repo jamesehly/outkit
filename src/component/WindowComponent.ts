@@ -1,6 +1,6 @@
 import { State } from '../state/State';
 import { ILogger } from "../util/Logger";
-import { IAnimator } from "../animator/Animators";
+import { IAnimator } from 'outkit-animator';
 import { Composite } from "./Composite";
 
 export class WindowComponent extends Composite {

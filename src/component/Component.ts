@@ -1,5 +1,5 @@
+import { IAnimator } from 'outkit-animator';
 import { ILogger } from "../util/Logger";
-import { IAnimator } from "../animator/Animators";
 import { State } from "../state/State";
 import ElementHelper from "../util/ElementHelper";
 

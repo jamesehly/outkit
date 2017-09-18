@@ -1,6 +1,6 @@
 import { Component, IComponent } from "./Component";
 import { ILogger } from "../util/Logger";
-import { IAnimator } from "../animator/Animators";
+import { IAnimator } from 'outkit-animator';
 
 export interface IComposite extends IComponent {
     getChildren(): Array<IComponent>
