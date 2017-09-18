@@ -15,11 +15,7 @@ export class VerticalLayoutComponent extends Composite {
 
     constructor(logger: ILogger, animator?: IAnimator) {
         super(logger, animator);
-
-        this.fixedChildren = new Array<IComponent>();
-        this.perctChildren = new Array<IComponent>();
-        this.fluidChildren = new Array<IComponent>();
-
+        this.resetChildren();
         this.registerEvent('init', () => { return this.init() });
     }
 
@@ -36,6 +32,9 @@ export class VerticalLayoutComponent extends Composite {
     init() {
         let el = this.getElement();
         let factory = new ComponentFactory();
+
+        this.resetChildren();
+        
         for (let i = 0; i < el.children.length; i++) {
             let child = el.children[i] as HTMLElement;
             if (!child.id)
@@ -100,5 +99,16 @@ export class VerticalLayoutComponent extends Composite {
             promises.push(el.render({ style: { height: height + 'px' } }));
         }
         return Promise.all(promises);
+    }
+
+    /**
+     * Sets the chidren arrays to new arrays.
+     * @private
+     * @memberof HorizontalLayoutComponent
+     */
+    private resetChildren(): void {
+        this.fixedChildren = new Array<IComponent>();
+        this.perctChildren = new Array<IComponent>();
+        this.fluidChildren = new Array<IComponent>();
     }
 }

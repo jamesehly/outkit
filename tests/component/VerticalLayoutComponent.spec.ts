@@ -1,5 +1,5 @@
 import { VerticalLayoutComponent } from "../../src/component/VerticalLayoutComponent";
-import StandardAnimator from "../../src/animator/StandardAnimator";
+import {OutkitAnimator} from "outkit-animator";
 import { State } from "../../src/state/State";
 import Logger from "../../src/util/Logger";
 import { Promise } from "es6-promise";
@@ -30,7 +30,7 @@ describe('VerticalLayoutComponent Tests', () => {
         re.appendChild(c3);
 
         // System under test  
-        sut = new VerticalLayoutComponent(new Logger(), new StandardAnimator());
+        sut = new VerticalLayoutComponent(new Logger(), new OutkitAnimator());
         sut.setElement(re);
     });
 
@@ -83,6 +83,24 @@ describe('VerticalLayoutComponent Tests', () => {
             expect(children[0].getElement().offsetWidth).toBeCloseTo(500, 1);
             expect(children[1].getElement().offsetWidth).toBeCloseTo(500, 1);
             expect(children[2].getElement().offsetWidth).toBeCloseTo(500, 1);
+            done();
+        })
+    });
+
+    it('should expand to full height if there is only one child', (done) => {
+        //Arrange
+        pe.style.width = '500px';
+        pe.style.height = '1000px';
+
+        c2.remove();
+        c3.remove();
+
+        //Act
+        sut.relay('init').then(() => {
+            let children = sut.getChildren();
+            expect(children[0].getElement().offsetHeight).toBe(1000);
+            
+            expect(children[0].getElement().offsetWidth).toBeCloseTo(500, 1);
             done();
         })
     });

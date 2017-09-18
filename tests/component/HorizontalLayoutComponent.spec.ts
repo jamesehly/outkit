@@ -1,5 +1,5 @@
 import { HorizontalLayoutComponent } from "../../src/component/HorizontalLayoutComponent";
-import StandardAnimator from "../../src/animator/StandardAnimator";
+import { OutkitAnimator } from "outkit-animator";
 import { State } from "../../src/state/State";
 import Logger from "../../src/util/Logger";
 import { Promise } from "es6-promise";
@@ -30,7 +30,7 @@ describe('HorizontalLayoutComponent Tests', () => {
         re.appendChild(c3);
 
         // System under test  
-        sut = new HorizontalLayoutComponent(new Logger(), new StandardAnimator());
+        sut = new HorizontalLayoutComponent(new Logger(), new OutkitAnimator());
         sut.setElement(re);
     });
 

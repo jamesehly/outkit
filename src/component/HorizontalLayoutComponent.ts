@@ -15,21 +15,23 @@ export class HorizontalLayoutComponent extends Composite {
 
     constructor(logger: ILogger, animator?: IAnimator) {
         super(logger, animator);
-
-        this.fixedChildren = new Array<IComponent>();
-        this.perctChildren = new Array<IComponent>();
-        this.fluidChildren = new Array<IComponent>();
-
+        this.resetChildren();
         this.registerEvent('init', () => { return this.init() });
     }
 
+    /**
+     * For each child element in elements, set up a new Component figure 
+     * out if it has a width set as a pixel value (fixed child), a 100%
+     * value (fluid child), or a value set to a specific percentage 
+     * (percentage child)
+     * 
+     * @returns 
+     * @memberof HorizontalLayoutComponent
+     */
     init() {
-        // For each child element in elements, set up a new Component figure 
-        // out if it has a width set as a pixel value (fixed child), a 100%
-        // value (fluid child), or a value set to a specific percentage 
-        // (percentage child)
         let el = this.getElement();
         let factory = new ComponentFactory();
+        this.resetChildren();
         for (let i = 0; i < el.children.length; i++) {
             let child = el.children[i] as HTMLElement;
             if (!child.id)
@@ -91,5 +93,16 @@ export class HorizontalLayoutComponent extends Composite {
             promises.push(el.render({ style: { width: width + 'px' } }));
         }
         return Promise.all(promises);
+    }
+
+    /**
+     * Sets the chidren arrays to new arrays.
+     * @private
+     * @memberof HorizontalLayoutComponent
+     */
+    private resetChildren(): void {
+        this.fixedChildren = new Array<IComponent>();
+        this.perctChildren = new Array<IComponent>();
+        this.fluidChildren = new Array<IComponent>();
     }
 }

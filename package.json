@@ -11,8 +11,6 @@
         "docs": "typedoc --out docs/api/ src/js/",
         "preversion": "npm test",
         "release": "standard-version -a",
-        "serve": "webpack-dev-server --open --hot",
-        "start": "npm run serve",
         "test": "karma start"
     },
     "standard-version": {

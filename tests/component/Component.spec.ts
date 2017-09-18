@@ -1,6 +1,6 @@
 import { Component } from "../../src/component/Component";
 import Logger from "../../src/util/Logger";
-import StandardAnimator from "../../src/animator/StandardAnimator";
+import { OutkitAnimator } from "outkit-animator";
 import { Promise } from "es6-promise";
 import { State } from "../../src/state/State";
 if (!window['Promise'])
@@ -12,8 +12,8 @@ describe('Component Tests', () => {
     let child1: Component;
 
     beforeEach(() => {
-        sut = new Component(new Logger(true), new StandardAnimator());
-        child1 = new Component(new Logger(true), new StandardAnimator());
+        sut = new Component(new Logger(true), new OutkitAnimator());
+        child1 = new Component(new Logger(true), new OutkitAnimator());
     });
 
     it('should be able to set/get the element', () => {

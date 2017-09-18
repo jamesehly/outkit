@@ -1,5 +1,5 @@
 import { DrawerComponent } from "../../src/component/DrawerComponent";
-import StandardAnimator from "../../src/animator/StandardAnimator";
+import {OutkitAnimator} from "outkit-animator";
 import { State } from "../../src/state/State";
 import Logger from "../../src/util/Logger";
 import { Promise } from "es6-promise";
@@ -17,7 +17,7 @@ describe('DrawerComponent Tests (default options)', () => {
         document.body.appendChild(re);
 
         // System under test  
-        sut = new DrawerComponent(new Logger(), new StandardAnimator());
+        sut = new DrawerComponent(new Logger(), new OutkitAnimator());
         sut.setElement(re);
         sut.relay('init');
     });
