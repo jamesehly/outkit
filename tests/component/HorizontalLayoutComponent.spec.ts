@@ -19,6 +19,7 @@ describe('HorizontalLayoutComponent Tests', () => {
     beforeEach(() => {
         pe = document.createElement('div');
         re = document.createElement('div');
+        re.id = 'sut';
         document.body.appendChild(pe);
         pe.appendChild(re);
         c1 = document.createElement('div');
@@ -30,8 +31,7 @@ describe('HorizontalLayoutComponent Tests', () => {
         re.appendChild(c3);
 
         // System under test  
-        sut = new HorizontalLayoutComponent(new Logger(), new OutkitAnimator());
-        sut.setElement(re);
+        sut = new HorizontalLayoutComponent('#sut');
     });
 
     afterEach(() => {
@@ -61,7 +61,7 @@ describe('HorizontalLayoutComponent Tests', () => {
             expect(children[0].getElement().offsetHeight).toBeCloseTo(500, 1);
             expect(children[1].getElement().offsetHeight).toBeCloseTo(500, 1);
             expect(children[2].getElement().offsetHeight).toBeCloseTo(500, 1);
-            done();
+            done(); 
         })
     });
 

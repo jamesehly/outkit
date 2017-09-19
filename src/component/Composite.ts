@@ -1,5 +1,4 @@
 import { Component, IComponent } from "./Component";
-import { ILogger } from "../util/Logger";
 import { IAnimator } from 'outkit-animator';
 
 export interface IComposite extends IComponent {
@@ -10,8 +9,8 @@ export class Composite extends Component implements IComposite {
 
     private _list: Array<IComponent>;
 
-    constructor(logger?: ILogger, animator?: IAnimator) {
-        super(logger, animator);
+    constructor(element: string) {
+        super(element);
         this._list = [];
     }
 

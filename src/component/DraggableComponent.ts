@@ -1,5 +1,4 @@
 import { Composite } from "./Composite";
-import { ILogger } from "../util/Logger";
 import { IAnimator } from 'outkit-animator';
 import { State } from "../state/State";
 
@@ -15,8 +14,8 @@ export class DraggableComponent extends Composite {
     private _diffX: number;
     private _diffY: number;
 
-    constructor(logger: ILogger, animator?: IAnimator) {
-        super(logger, animator);
+    constructor(element: string) {
+        super(element);
 
         // Setup defaults
         this._dragRoot = false;

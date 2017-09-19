@@ -1,6 +1,4 @@
 import { Composite } from "./Composite";
-import { ILogger } from "../util/Logger";
-import Logger from "../util/Logger";
 import { IAnimator } from 'outkit-animator';
 import { IComponent, Component } from "./Component";
 import { ComponentFactory } from "./ComponentFactory";
@@ -13,8 +11,8 @@ export class HorizontalLayoutComponent extends Composite {
     private perctChildren: Array<IComponent>;
     private fluidChildren: Array<IComponent>;
 
-    constructor(logger: ILogger, animator?: IAnimator) {
-        super(logger, animator);
+    constructor(element: string) {
+        super(element);
         this.resetChildren();
         this.registerEvent('init', () => { return this.init() });
     }
@@ -36,8 +34,7 @@ export class HorizontalLayoutComponent extends Composite {
             let child = el.children[i] as HTMLElement;
             if (!child.id)
                 ElementHelper.setGuidId(child);
-            let childComponent = new Component(new Logger());
-            childComponent.setElement(document.getElementById(child.id));
+            let childComponent = new Component("#" + child.id);
             let size = child.getAttribute('data-size') || '100%';
             if (size === '100%') {
                 this.fluidChildren.push(childComponent);

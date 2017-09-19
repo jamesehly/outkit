@@ -1,6 +1,4 @@
 import { Composite } from "./Composite";
-import { ILogger } from "../util/Logger";
-import { IAnimator } from 'outkit-animator';
 import { State } from "../state/State";
 export declare class DraggableComponent extends Composite {
     private _dragRoot;
@@ -12,7 +10,7 @@ export declare class DraggableComponent extends Composite {
     private _parentLeft;
     private _diffX;
     private _diffY;
-    constructor(logger: ILogger, animator?: IAnimator);
+    constructor(element: string);
     dragRoot(flag: boolean): this;
     init(): Promise<State>;
     startDrag: (event: MouseEvent) => void;

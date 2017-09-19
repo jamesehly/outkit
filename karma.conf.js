@@ -1,4 +1,4 @@
-module.exports = function (config) {
+module.exports = function(config) {
     config.set({
         browsers: [
             'PhantomJS',
@@ -14,7 +14,7 @@ module.exports = function (config) {
             "src/**/*.ts": ["karma-typescript", "coverage"],
             "tests/**/*.ts": ["karma-typescript"]
         },
-        reporters: ["progress", "karma-typescript"],
+        reporters: ["progress", "html", "karma-typescript"],
         coverageReporter: {
             instrumenterOptions: {
                 istanbul: { noCompact: true }

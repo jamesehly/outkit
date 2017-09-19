@@ -1,5 +1,4 @@
 import { State } from '../state/State';
-import { ILogger } from "../util/Logger";
 import { IAnimator } from 'outkit-animator';
 import { Composite } from "./Composite";
 
@@ -11,8 +10,8 @@ export class DrawerComponent extends Composite {
     private _isOpen: boolean;
     private _dockPositions: string[] = ['left', 'right', 'top', 'bottom'];
 
-    constructor(logger: ILogger, animator?: IAnimator) {
-        super(logger, animator);
+    constructor(element: string) {
+        super(element);
 
         // Setup defaults
         this._dock = 'left';

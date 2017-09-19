@@ -7,6 +7,7 @@ export interface IComponent {
     setElement(element: HTMLElement): this;
     getElement(): HTMLElement;
     getAnimator(): IAnimator;
+    setAnimator(animator: IAnimator): this;
     addChild(component: IComponent): this;
     removeChild(component: IComponent): this;
     getChild(): IComponent;
@@ -24,10 +25,11 @@ export declare class Component implements IComponent {
         [id: string]: Function;
     };
     protected _state: State;
-    constructor(logger: ILogger, animator?: IAnimator);
+    constructor(element: string);
     getElement(): HTMLElement;
     setElement(element: HTMLElement): this;
     getAnimator(): IAnimator;
+    setAnimator(animator: IAnimator): this;
     addChild(component: IComponent): this;
     removeChild(component: IComponent): this;
     getChild(): IComponent;

@@ -19,6 +19,7 @@ describe('VerticalLayoutComponent Tests', () => {
     beforeEach(() => {
         pe = document.createElement('div');
         re = document.createElement('div');
+        re.id = 'sut';
         document.body.appendChild(pe);
         pe.appendChild(re);
         c1 = document.createElement('div');
@@ -30,7 +31,7 @@ describe('VerticalLayoutComponent Tests', () => {
         re.appendChild(c3);
 
         // System under test  
-        sut = new VerticalLayoutComponent(new Logger(), new OutkitAnimator());
+        sut = new VerticalLayoutComponent('#sut');
         sut.setElement(re);
     });
 

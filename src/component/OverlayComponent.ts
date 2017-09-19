@@ -1,5 +1,4 @@
 import { State } from "../state/State";
-import { ILogger } from "../util/Logger";
 import { IAnimator } from 'outkit-animator';
 import { Component } from "./Component";
 
@@ -9,8 +8,8 @@ export class OverlayComponent extends Component {
     private _opacity: number;
     private _isOn: boolean;
 
-    constructor(logger: ILogger, animator?: IAnimator) {
-        super(logger, animator);
+    constructor(element: string) {
+        super(element);
 
         // Setup defaults
         this._opacity = .8;

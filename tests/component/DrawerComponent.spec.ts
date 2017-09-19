@@ -11,15 +11,20 @@ if (!window['Promise']) {
 describe('DrawerComponent Tests (default options)', () => {
 
     let sut: DrawerComponent;
+    let re: HTMLElement;
 
     beforeEach(() => {
-        let re = document.createElement('div');
+        re = document.createElement('div');
+        re.id = 'sut';
         document.body.appendChild(re);
 
         // System under test  
-        sut = new DrawerComponent(new Logger(), new OutkitAnimator());
-        sut.setElement(re);
+        sut = new DrawerComponent('#sut');
         sut.relay('init');
+    });
+
+    afterEach(() => {
+        re.remove();
     });
 
     it('should open (turn on)', (done) => {

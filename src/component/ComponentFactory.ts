@@ -11,56 +11,46 @@ import { VerticalLayoutComponent } from "./VerticalLayoutComponent";
 export class ComponentFactory {
 
     component(element: string): IComponent {
-        let component = new Component(new Logger(), new OutkitAnimator())
-        component.setElement(this.getElement(element));
+        let component = new Component(element)
         return component;
     }
 
     drawer(element: string): IComponent {
-        let component = new DrawerComponent(new Logger(), new OutkitAnimator());
-        let el = this.getElement(element);
-        component.setElement(el);
+        let component = new DrawerComponent(element);
         component.init();
         return component;
     }
 
     // @todo figure out how to insert options into the factory methods via options object
     overlay(element: string): IComponent {
-        let component = new OverlayComponent(new Logger(), new OutkitAnimator())
-        component.setElement(this.getElement(element));
+        let component = new OverlayComponent(element)
         component.init();
         return component;
     }
 
     window(element: string): IComponent {
-        let component = new WindowComponent(new Logger(), new OutkitAnimator())
-        component.setElement(this.getElement(element));
+        let component = new WindowComponent(element)
         component.init();
         return component;
     }
 
     draggable(element: string): IComponent {
-        let component = new DraggableComponent(new Logger(), new OutkitAnimator())
-        component.setElement(this.getElement(element));
+        let component = new DraggableComponent(element)
         component.init();
         return component;
     }
 
     hlayout(element: string): IComponent {
-        let component = new HorizontalLayoutComponent(new Logger())
-        component.setElement(this.getElement(element));
+        let component = new HorizontalLayoutComponent(element)
+        component.setAnimator(null);
         component.init();
         return component;
     }
 
     vlayout(element: string): IComponent {
-        let component = new VerticalLayoutComponent(new Logger())
-        component.setElement(this.getElement(element));
+        let component = new VerticalLayoutComponent(element)
+        component.setAnimator(null);
         component.init();
         return component;
-    }
-
-    private getElement(query: string): HTMLElement {
-        return document.querySelectorAll(query)[0] as HTMLElement;
     }
 }

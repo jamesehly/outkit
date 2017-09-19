@@ -33,4 +33,12 @@ export default class ElementHelper {
         var uniqueId = 'ok-guid-' + Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
         element.id = uniqueId;
     }
+
+    /**
+     * Returns the first HTML Element matched by query
+     * @param query selector query
+     */
+    public static queryElement(query: string): HTMLElement {
+        return document.querySelectorAll(query)[0] as HTMLElement;
+    }
 }

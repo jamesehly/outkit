@@ -1,8 +1,7 @@
-import { IAnimator } from 'outkit-animator';
-import { ILogger } from "../util/Logger";
+import { IAnimator, OutkitAnimator } from 'outkit-animator';
+import Logger, { ILogger } from "../util/Logger";
 import { State } from "../state/State";
 import ElementHelper from "../util/ElementHelper";
-
 
 export interface IComponent {
     relay(message: string): Promise<any>;
@@ -10,6 +9,7 @@ export interface IComponent {
     setElement(element: HTMLElement): this;
     getElement(): HTMLElement;
     getAnimator(): IAnimator;
+    setAnimator(animator: IAnimator): this;
     addChild(component: IComponent): this;
     removeChild(component: IComponent): this;
     getChild(): IComponent;
@@ -29,12 +29,18 @@ export class Component implements IComponent {
     protected _events: { [id: string]: Function };
     protected _state: State;
 
-    constructor(logger: ILogger, animator?: IAnimator) {
+    constructor(element: string) {
         this._events = {};
-        this._logger = logger;
-        this._animator = animator;
+        this._logger = new Logger();
+        this._animator = new OutkitAnimator();
+        const el = ElementHelper.queryElement(element);
+        if (!el) {
+            this._logger.error(`Element "${element}" could not be found.  Ensure your query string is a valid css selector.`);
+            return;
+        }
+        this.setElement(el);
         this._state = null;
-        if (typeof this._animator !== 'undefined' && 
+        if (typeof this._animator !== 'undefined' &&
             this._animator !== null &&
             typeof this._animator.setStep !== 'undefined' &&
             typeof this._animator.setStep === 'function') {
@@ -53,6 +59,11 @@ export class Component implements IComponent {
 
     getAnimator(): IAnimator {
         return this._animator;
+    }
+
+    setAnimator(animator: IAnimator): this {
+        this._animator = animator;
+        return this;
     }
 
     addChild(component: IComponent): this {
@@ -205,7 +216,7 @@ export class Component implements IComponent {
 
             if (isFinite(nsv) && isFinite(osv)) {
                 let value = (nsv - osv) * delta + osv + '';
-                if ((!isFinite(ns) && ns.match(/px$/)) || (!isFinite(os) && os.match(/px$/))) 
+                if ((!isFinite(ns) && ns.match(/px$/)) || (!isFinite(os) && os.match(/px$/)))
                     value = `${value}px`;
                 this._element.style[name] = value;
             }

@@ -7,5 +7,4 @@ export declare class ComponentFactory {
     draggable(element: string): IComponent;
     hlayout(element: string): IComponent;
     vlayout(element: string): IComponent;
-    private getElement(query);
 }

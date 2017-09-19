@@ -8,12 +8,23 @@ if (!window['Promise'])
 
 describe('Component Tests', () => {
 
+    let sutEl: HTMLElement;
+    let childEl: HTMLElement;
     let sut: Component;
     let child1: Component;
 
     beforeEach(() => {
-        sut = new Component(new Logger(true), new OutkitAnimator());
-        child1 = new Component(new Logger(true), new OutkitAnimator());
+        sutEl = document.createElement('div') as HTMLElement;
+        sutEl.id = "sut";
+        childEl = document.createElement('div') as HTMLElement;
+        childEl.id = "sut-child";
+        sut = new Component('#sut');
+        child1 = new Component('#sut-child');
+    });
+    
+    afterEach(() => {
+        sutEl.remove();
+        childEl.remove();
     });
 
     it('should be able to set/get the element', () => {
@@ -59,7 +70,6 @@ describe('Component Tests', () => {
         //Assert
         expect(count).toEqual(3);
     })
-
 
     it('should be able to set/get state', () => {
         //Arrange
@@ -116,7 +126,7 @@ describe('Component Tests', () => {
         });
     });
 
-    
+
     it('should merge new state with old state', () => {
         //Arange
         var oldState = new State();
@@ -136,6 +146,6 @@ describe('Component Tests', () => {
         expect(result.style.display).toEqual('block');
         expect(result.style.height).toEqual('100px');
     });
-        
+
 
 });
