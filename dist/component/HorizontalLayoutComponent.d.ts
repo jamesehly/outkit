@@ -10,4 +10,5 @@ export declare class HorizontalLayoutComponent extends Composite {
     init(): Promise<any[]>;
     resize(): Promise<any[]>;
     render(newState: State): Promise<any[]>;
+    private resetChildren();
 }
