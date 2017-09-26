@@ -2,7 +2,7 @@ import { State } from "../state/State";
 import { IAnimator } from 'outkit-animator';
 import { Component } from "./Component";
 
-export class OverlayComponent extends Component {
+export default class Overlay extends Component {
 
     private _color: string;
     private _opacity: number;

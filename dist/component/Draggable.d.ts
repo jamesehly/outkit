@@ -1,6 +1,6 @@
 import { Composite } from "./Composite";
 import { State } from "../state/State";
-export declare class DraggableComponent extends Composite {
+export default class Draggable extends Composite {
     private _dragRoot;
     private _x;
     private _y;

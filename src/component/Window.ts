@@ -2,7 +2,16 @@ import { State } from '../state/State';
 import { IAnimator } from 'outkit-animator';
 import { Composite } from "./Composite";
 
-export class WindowComponent extends Composite {
+export interface WindowOptions {
+    width?:number,
+    height?: number,
+    top?: number,
+    left?:number,
+    bottom?:number,
+    right?: number
+}
+
+export default class Window extends Composite {
 
     private _width: number;
     private _height: number;
@@ -10,7 +19,7 @@ export class WindowComponent extends Composite {
     private _left: number;
     private _isOpen: boolean;
 
-    constructor(element: string) {
+    constructor(element: string, options?: WindowOptions) {
         super(element);
 
         // Setup defaults

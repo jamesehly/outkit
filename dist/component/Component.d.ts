@@ -16,9 +16,9 @@ export interface IComponent {
     render(newState: State): Promise<any>;
 }
 export declare class Component implements IComponent {
-    private _element;
     private _child;
     private _parent;
+    protected _element: HTMLElement;
     protected _logger: ILogger;
     protected _animator: IAnimator;
     protected _events: {

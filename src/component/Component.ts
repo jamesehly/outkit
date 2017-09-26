@@ -20,10 +20,10 @@ export interface IComponent {
 
 export class Component implements IComponent {
 
-    private _element: HTMLElement;
     private _child: IComponent;
     private _parent: IComponent;
 
+    protected _element: HTMLElement;
     protected _logger: ILogger;
     protected _animator: IAnimator;
     protected _events: { [id: string]: Function };

@@ -2,7 +2,14 @@ import { State } from '../state/State';
 import { IAnimator } from 'outkit-animator';
 import { Composite } from "./Composite";
 
-export class DrawerComponent extends Composite {
+export interface DrawerOptions {
+    dock?: string,
+    minSize?: number,
+    maxSize?: number,
+    isOpen?: boolean
+}
+
+export default class Drawer extends Composite {
 
     private _dock: string;
     private _maxSize: number;
@@ -10,7 +17,7 @@ export class DrawerComponent extends Composite {
     private _isOpen: boolean;
     private _dockPositions: string[] = ['left', 'right', 'top', 'bottom'];
 
-    constructor(element: string) {
+    constructor(element: string, options?: DrawerOptions) {
         super(element);
 
         // Setup defaults

@@ -1,12 +1,20 @@
 import { State } from '../state/State';
 import { Composite } from "./Composite";
-export declare class WindowComponent extends Composite {
+export interface WindowOptions {
+    width?: number;
+    height?: number;
+    top?: number;
+    left?: number;
+    bottom?: number;
+    right?: number;
+}
+export default class Window extends Composite {
     private _width;
     private _height;
     private _top;
     private _left;
     private _isOpen;
-    constructor(element: string);
+    constructor(element: string, options?: WindowOptions);
     width(n: number): this;
     height(n: number): this;
     top(n: number): this;

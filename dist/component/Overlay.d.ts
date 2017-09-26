@@ -1,6 +1,6 @@
 import { State } from "../state/State";
 import { Component } from "./Component";
-export declare class OverlayComponent extends Component {
+export default class Overlay extends Component {
     private _color;
     private _opacity;
     private _isOn;

@@ -1,12 +1,12 @@
 import { Component, IComponent } from "./Component";
 import Logger from "../util/Logger";
 import { OutkitAnimator } from 'outkit-animator';
-import { DrawerComponent } from "./DrawerComponent";
-import { OverlayComponent } from "./OverlayComponent";
-import { WindowComponent } from "./WindowComponent";
-import { DraggableComponent } from "./DraggableComponent";
-import { HorizontalLayoutComponent } from "./HorizontalLayoutComponent";
-import { VerticalLayoutComponent } from "./VerticalLayoutComponent";
+import Drawer from "./Drawer";
+import Overlay from "./Overlay";
+import Window from "./Window";
+import Draggable from "./Draggable";
+import HorizontalLayout from "./HorizontalLayout";
+import VerticalLayout from "./VerticalLayout";
 
 export class ComponentFactory {
 
@@ -16,39 +16,39 @@ export class ComponentFactory {
     }
 
     drawer(element: string): IComponent {
-        let component = new DrawerComponent(element);
+        let component = new Drawer(element);
         component.init();
         return component;
     }
 
     // @todo figure out how to insert options into the factory methods via options object
     overlay(element: string): IComponent {
-        let component = new OverlayComponent(element)
+        let component = new Overlay(element)
         component.init();
         return component;
     }
 
     window(element: string): IComponent {
-        let component = new WindowComponent(element)
+        let component = new Window(element)
         component.init();
         return component;
     }
 
     draggable(element: string): IComponent {
-        let component = new DraggableComponent(element)
+        let component = new Draggable(element)
         component.init();
         return component;
     }
 
     hlayout(element: string): IComponent {
-        let component = new HorizontalLayoutComponent(element)
+        let component = new HorizontalLayout(element)
         component.setAnimator(null);
         component.init();
         return component;
     }
 
     vlayout(element: string): IComponent {
-        let component = new VerticalLayoutComponent(element)
+        let component = new VerticalLayout(element)
         component.setAnimator(null);
         component.init();
         return component;

@@ -2,7 +2,7 @@ import { Composite } from "./Composite";
 import { IAnimator } from 'outkit-animator';
 import { State } from "../state/State";
 
-export class DraggableComponent extends Composite {
+export default class Draggable extends Composite {
 
     private _dragRoot: boolean;
     private _x: number;
