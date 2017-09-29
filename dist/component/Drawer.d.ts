@@ -1,12 +1,12 @@
 import { State } from '../state/State';
-import { Composite } from "./Composite";
+import { Component } from "./Component";
 export interface DrawerOptions {
     dock?: string;
     minSize?: number;
     maxSize?: number;
     isOpen?: boolean;
 }
-export default class Drawer extends Composite {
+export default class Drawer extends Component {
     private _dock;
     private _maxSize;
     private _minSize;

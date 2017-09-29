@@ -1,10 +1,9 @@
 export * from './state/State';
 export * from './component/ComponentFactory';
 export * from './component/Component';
-export * from './component/Composite';
-export * from './component/Drawer';
-export * from './component/VerticalLayout';
-export * from './component/HorizontalLayout';
-export * from './component/Window';
-export * from './component/Overlay';
-export * from './component/Draggable';
+export { default as Drawer } from './component/Drawer';
+export { default as VerticalLayout } from './component/VerticalLayout';
+export { default as HorizontalLayout } from './component/HorizontalLayout';
+export { default as Window } from './component/Window';
+export { default as Overlay } from './component/Overlay';
+export { default as Draggable } from './component/Draggable';

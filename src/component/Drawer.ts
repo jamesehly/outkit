@@ -1,6 +1,6 @@
 import { State } from '../state/State';
 import { IAnimator } from 'outkit-animator';
-import { Composite } from "./Composite";
+import { Component } from "./Component";
 
 export interface DrawerOptions {
     dock?: string,
@@ -9,7 +9,7 @@ export interface DrawerOptions {
     isOpen?: boolean
 }
 
-export default class Drawer extends Composite {
+export default class Drawer extends Component {
 
     private _dock: string;
     private _maxSize: number;

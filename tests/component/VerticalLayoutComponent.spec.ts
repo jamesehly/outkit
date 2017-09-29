@@ -1,4 +1,4 @@
-import { VerticalLayoutComponent } from "../../src/component/VerticalLayoutComponent";
+import VerticalLayout from "../../src/component/VerticalLayout";
 import {OutkitAnimator} from "outkit-animator";
 import { State } from "../../src/state/State";
 import Logger from "../../src/util/Logger";
@@ -8,8 +8,8 @@ if (!window['Promise']) {
     window['Promise'] = Promise;
 }
 
-describe('VerticalLayoutComponent Tests', () => {
-    let sut: VerticalLayoutComponent;
+describe('VerticalLayout Tests', () => {
+    let sut: VerticalLayout;
     let c1: HTMLElement;
     let c2: HTMLElement;
     let c3: HTMLElement;
@@ -31,7 +31,7 @@ describe('VerticalLayoutComponent Tests', () => {
         re.appendChild(c3);
 
         // System under test  
-        sut = new VerticalLayoutComponent('#sut');
+        sut = new VerticalLayout('#sut');
         sut.setElement(re);
     });
 

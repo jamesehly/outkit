@@ -1,6 +1,6 @@
-import { Composite } from "./Composite";
+import { Component } from "./Component";
 import { State } from "../state/State";
-export default class HorizontalLayout extends Composite {
+export default class HorizontalLayout extends Component {
     private fixedChildren;
     private perctChildren;
     private fluidChildren;

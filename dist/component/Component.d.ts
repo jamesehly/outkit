@@ -10,14 +10,14 @@ export interface IComponent {
     setAnimator(animator: IAnimator): this;
     addChild(component: IComponent): this;
     removeChild(component: IComponent): this;
-    getChild(): IComponent;
+    getChildren(): Array<IComponent>;
     getRoot(): IComponent;
     setParent(parent: IComponent): this;
     render(newState: State): Promise<any>;
 }
 export declare class Component implements IComponent {
-    private _child;
     private _parent;
+    private _children;
     protected _element: HTMLElement;
     protected _logger: ILogger;
     protected _animator: IAnimator;
@@ -32,7 +32,7 @@ export declare class Component implements IComponent {
     setAnimator(animator: IAnimator): this;
     addChild(component: IComponent): this;
     removeChild(component: IComponent): this;
-    getChild(): IComponent;
+    getChildren(): IComponent[];
     setParent(parent: IComponent): this;
     getRoot(): IComponent;
     getState(): State;

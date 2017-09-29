@@ -1,11 +1,10 @@
-import { Composite } from "./Composite";
 import { IAnimator } from 'outkit-animator';
 import { IComponent, Component } from "./Component";
 import { ComponentFactory } from "./ComponentFactory";
 import ElementHelper from "../util/ElementHelper";
 import { State } from "../state/State";
 
-export default class HorizontalLayout extends Composite {
+export default class HorizontalLayout extends Component {
 
     private fixedChildren: Array<IComponent>;
     private perctChildren: Array<IComponent>;

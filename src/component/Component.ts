@@ -12,7 +12,7 @@ export interface IComponent {
     setAnimator(animator: IAnimator): this;
     addChild(component: IComponent): this;
     removeChild(component: IComponent): this;
-    getChild(): IComponent;
+    getChildren(): Array<IComponent>;
     getRoot(): IComponent;
     setParent(parent: IComponent): this;
     render(newState: State): Promise<any>;
@@ -20,8 +20,8 @@ export interface IComponent {
 
 export class Component implements IComponent {
 
-    private _child: IComponent;
     private _parent: IComponent;
+    private _children: Array<IComponent>;
 
     protected _element: HTMLElement;
     protected _logger: ILogger;
@@ -33,13 +33,14 @@ export class Component implements IComponent {
         this._events = {};
         this._logger = new Logger();
         this._animator = new OutkitAnimator();
+        this._children = new Array<IComponent>();
         const el = ElementHelper.queryElement(element);
         if (!el) {
             this._logger.error(`Element "${element}" could not be found.  Ensure your query string is a valid css selector.`);
             return;
         }
         this.setElement(el);
-        this._state = null;
+        this._state = null; 
         if (typeof this._animator !== 'undefined' &&
             this._animator !== null &&
             typeof this._animator.setStep !== 'undefined' &&
@@ -67,18 +68,19 @@ export class Component implements IComponent {
     }
 
     addChild(component: IComponent): this {
-        this._child = component;
+        this._children.push(component);
         component.setParent(this);
         return this;
     }
 
     removeChild(component: IComponent): this {
-        this._child = null;
+        let index = this._children.indexOf(component);
+        this._children.splice(index, 1);
         return this;
     }
 
-    getChild(): IComponent {
-        return this._child;
+    getChildren(): IComponent[] {
+        return this._children;
     }
 
     setParent(parent: IComponent) {
@@ -108,13 +110,14 @@ export class Component implements IComponent {
     }
 
     relay(message: string): Promise<any> {
-        let promises = []
+        var promises = [];
         if (typeof this._events[message] === 'function')
             promises.push(this._events[message]());
 
-        let child = this.getChild();
-        if (typeof child === 'object' && typeof child['relay'] === 'function')
-            promises.push(this.getChild().relay(message));
+        for (let child of this._children) {
+            if (typeof child === 'object' && typeof child['relay'] === 'function')
+                promises.push(child.relay(message));
+        }
         return Promise.all(promises);
     }
 

@@ -1,4 +1,4 @@
-import { HorizontalLayoutComponent } from "../../src/component/HorizontalLayoutComponent";
+import HorizontalLayout from "../../src/component/HorizontalLayout";
 import { OutkitAnimator } from "outkit-animator";
 import { State } from "../../src/state/State";
 import Logger from "../../src/util/Logger";
@@ -8,8 +8,8 @@ if (!window['Promise']) {
     window['Promise'] = Promise;
 }
 
-describe('HorizontalLayoutComponent Tests', () => {
-    let sut: HorizontalLayoutComponent;
+describe('HorizontalLayout Tests', () => {
+    let sut: HorizontalLayout;
     let c1: HTMLElement;
     let c2: HTMLElement;
     let c3: HTMLElement;
@@ -31,7 +31,7 @@ describe('HorizontalLayoutComponent Tests', () => {
         re.appendChild(c3);
 
         // System under test  
-        sut = new HorizontalLayoutComponent('#sut');
+        sut = new HorizontalLayout('#sut');
     });
 
     afterEach(() => {

@@ -1,6 +1,6 @@
 import { State } from '../state/State';
 import { IAnimator } from 'outkit-animator';
-import { Composite } from "./Composite";
+import { Component } from "./Component";
 
 export interface WindowOptions {
     width?:number,
@@ -11,7 +11,7 @@ export interface WindowOptions {
     right?: number
 }
 
-export default class Window extends Composite {
+export default class Window extends Component {
 
     private _width: number;
     private _height: number;

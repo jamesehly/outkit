@@ -1,6 +1,6 @@
 import { Component, IComponent } from "./Component";
-import Logger from "../util/Logger";
 import { OutkitAnimator } from 'outkit-animator';
+
 import Drawer from "./Drawer";
 import Overlay from "./Overlay";
 import Window from "./Window";

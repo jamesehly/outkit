@@ -1,4 +1,3 @@
-import { Composite } from "./Composite";
 import { IAnimator } from 'outkit-animator';
 import { IComponent, Component } from "./Component";
 import { ComponentFactory } from "./ComponentFactory";
@@ -7,7 +6,7 @@ import { State } from "../state/State";
 
 // @todo add a ready class or something so that scrollbars don't render before the layout is drawn for the first time
 
-export default class VerticalLayout extends Composite {
+export default class VerticalLayout extends Component {
 
     private fixedChildren: Array<IComponent>;
     private perctChildren: Array<IComponent>;

@@ -1,5 +1,5 @@
 import { State } from '../state/State';
-import { Composite } from "./Composite";
+import { Component } from "./Component";
 export interface WindowOptions {
     width?: number;
     height?: number;
@@ -8,7 +8,7 @@ export interface WindowOptions {
     bottom?: number;
     right?: number;
 }
-export default class Window extends Composite {
+export default class Window extends Component {
     private _width;
     private _height;
     private _top;

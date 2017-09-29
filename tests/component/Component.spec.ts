@@ -40,7 +40,7 @@ describe('Component Tests', () => {
         //Act
         sut.addChild(child1);
         //Assert
-        expect(child1).toBe(sut.getChild() as Component);
+        expect(child1).toBe(sut.getChildren()[0] as Component);
     });
 
     it('should be able to register and relay events', () => {

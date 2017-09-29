@@ -1,4 +1,4 @@
-import { DrawerComponent } from "../../src/component/DrawerComponent";
+import Drawer from "../../src/component/Drawer";
 import {OutkitAnimator} from "outkit-animator";
 import { State } from "../../src/state/State";
 import Logger from "../../src/util/Logger";
@@ -8,9 +8,9 @@ if (!window['Promise']) {
     window['Promise'] = Promise;
 }
 
-describe('DrawerComponent Tests (default options)', () => {
+describe('Drawer Tests (default options)', () => {
 
-    let sut: DrawerComponent;
+    let sut: Drawer;
     let re: HTMLElement;
 
     beforeEach(() => {
@@ -19,7 +19,7 @@ describe('DrawerComponent Tests (default options)', () => {
         document.body.appendChild(re);
 
         // System under test  
-        sut = new DrawerComponent('#sut');
+        sut = new Drawer('#sut');
         sut.relay('init');
     });
 
