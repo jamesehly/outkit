@@ -34,7 +34,7 @@ export default class HorizontalLayout extends Component {
             if (!child.id)
                 ElementHelper.setGuidId(child);
             let childComponent = new Component("#" + child.id);
-            childComponent.getAnimator().setDuration(0);
+            childComponent.setAnimator(null);
             let size = child.getAttribute('data-size') || '100%';
             if (size === '100%') {
                 this.fluidChildren.push(childComponent);
