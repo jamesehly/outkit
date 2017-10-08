@@ -1,4 +1,4 @@
-import Drawer from "../../src/component/Drawer";
+import Drawer from "../../src/components/Drawer";
 import {OutkitAnimator} from "outkit-animator";
 import { State } from "../../src/state/State";
 import Logger from "../../src/util/Logger";

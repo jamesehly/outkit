@@ -1,4 +1,4 @@
-import { Component } from "../../src/component/Component";
+import { Component } from "../../src/components/Component";
 import Logger from "../../src/util/Logger";
 import { OutkitAnimator } from "outkit-animator";
 import { Promise } from "es6-promise";

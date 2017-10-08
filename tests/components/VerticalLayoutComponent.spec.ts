@@ -1,4 +1,4 @@
-import VerticalLayout from "../../src/component/VerticalLayout";
+import VerticalLayout from "../../src/components/VerticalLayout";
 import {OutkitAnimator} from "outkit-animator";
 import { State } from "../../src/state/State";
 import Logger from "../../src/util/Logger";

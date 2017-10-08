@@ -1,8 +1,7 @@
 module.exports = function(config) {
     config.set({
         browsers: [
-            'PhantomJS',
-            'Chrome'
+            'PhantomJS'
         ],
         frameworks: ['jasmine', 'karma-typescript'],
         files: [

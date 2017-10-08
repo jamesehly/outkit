@@ -9,7 +9,7 @@
     "scripts": {
         "build": "rimraf ./dist && webpack && uglifyjs ./dist/outkit.js -c -m -o ./dist/outkit.min.js --source-map ./dist/outkit.min.js.map --comments /Copyright/",
         "docs": "typedoc --out docs/api/ src/js/",
-        "preversion": "npm test",
+        "prerelease": "npm test",
         "release": "standard-version -a",
         "test": "karma start"
     },

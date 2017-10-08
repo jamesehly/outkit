@@ -1,4 +1,4 @@
-import HorizontalLayout from "../../src/component/HorizontalLayout";
+import HorizontalLayout from "../../src/components/HorizontalLayout";
 import { OutkitAnimator } from "outkit-animator";
 import { State } from "../../src/state/State";
 import Logger from "../../src/util/Logger";
