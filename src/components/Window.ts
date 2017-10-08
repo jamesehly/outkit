@@ -91,7 +91,7 @@ export default class Window extends Component {
         state.style.display = 'none';
         state.style.zIndex = '9999'
         state.style.width = `${this._width}px`;
-        state.style.height = `${this.height}px`;
+        state.style.height = `${this._height}px`;
         state.style.opacity = '0';
         let left = '0';
         let top = '0';
