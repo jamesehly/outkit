@@ -1,6 +1,5 @@
 import { IAnimator } from 'outkit-animator';
 import { IComponent, Component } from "./Component";
-import { ComponentFactory } from "./ComponentFactory";
 import ElementHelper from "../util/ElementHelper";
 import { State } from "../state/State";
 
@@ -27,7 +26,6 @@ export default class HorizontalLayout extends Component {
      */
     init() {
         let el = this.getElement();
-        let factory = new ComponentFactory();
         this.resetChildren();
         for (let i = 0; i < el.children.length; i++) {
             let child = el.children[i] as HTMLElement;

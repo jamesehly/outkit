@@ -2,6 +2,42 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/jamesehly/outkit/compare/v0.2.5...v1.0.0) (2017-10-08)
+
+
+### Bug Fixes
+
+* **architecture:** drop component suffix from classes ([1048072](https://github.com/jamesehly/outkit/commit/1048072))
+* **architecture:** rename component directory to components ([d043070](https://github.com/jamesehly/outkit/commit/d043070))
+* **cleanup:** remove examples and animator ([380fdcd](https://github.com/jamesehly/outkit/commit/380fdcd))
+* **export:** fix re-exporting default exports ([df03373](https://github.com/jamesehly/outkit/commit/df03373))
+* **layout:** fixed bug where calling init added on to child arrays ([d1464c7](https://github.com/jamesehly/outkit/commit/d1464c7))
+* **layout:** remove animator from layout children ([8a00621](https://github.com/jamesehly/outkit/commit/8a00621))
+* **layout:** set duration to zero on child components for layout ([34d6d96](https://github.com/jamesehly/outkit/commit/34d6d96))
+* **logger:** export logger so that you can build exteral components ([93644f8](https://github.com/jamesehly/outkit/commit/93644f8))
+
+
+### Features
+
+* **component:** refactor component constructor to find element ([94ce674](https://github.com/jamesehly/outkit/commit/94ce674))
+
+
+### BREAKING CHANGES
+
+* **architecture:** class architecture has been redone so that the Component
+suffix was dropped from the component classes. This decision was made to
+make it less verbose when instansiating components. new Drawer as opposed
+to new DrawerComponent (and drawer is a composite anyway).
+* **component:** components now take in a selector query string instead
+  of the logger and animator. This was done to make it easier to create
+  new third party components, and to make it easier to instantiate
+  components without the need for a factory class.  Drawbacks are tight
+  coupling with Logger and OutkitAnimator.  The animator can be changed
+  after instantiation and I don't see using a different logger.
+
+
+
 <a name="0.2.6"></a>
 ## [0.2.6](https://github.com/jamesehly/outkit/compare/v0.2.5...v0.2.6) (2017-09-02)
 
