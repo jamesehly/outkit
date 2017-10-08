@@ -7,8 +7,6 @@ export interface WindowOptions {
     height?: number,
     top?: number,
     left?: number,
-    bottom?: number,
-    right?: number,
     placement?: WindowPlacement,
     placementMargin?: number
 }
