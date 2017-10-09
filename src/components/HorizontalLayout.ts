@@ -43,7 +43,7 @@ export default class HorizontalLayout extends Component {
             else {
                 this.fixedChildren.push(childComponent);
             }
-            childComponent.render({ style: { height: '100%', width: size, float: 'left' } })
+            childComponent.render({ style: { height: '100%', width: size, overflow: 'hidden', float: 'left' } })
             this.addChild(childComponent);
         }
 
@@ -54,6 +54,8 @@ export default class HorizontalLayout extends Component {
         state.style.height = this.getElement().parentElement.offsetHeight + 'px';
         state.style.width = this.getElement().parentElement.offsetWidth + 'px';
         state.style.display = "block";
+        state.style.overflow = "hidden";
+        state.style.float = "left"
         return this.render(state);
     }
 
