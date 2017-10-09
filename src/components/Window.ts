@@ -95,13 +95,13 @@ export default class Window extends Component {
         state.style.opacity = '0';
         let left = '0';
         let top = '0';
-        let parentWidth = this.getElement().parentElement.offsetWidth;
-        let parentHeight = this.getElement().parentElement.offsetHeight;
+        let windowWidth = window.innerWidth;
+        let windowHeight = window.innerHeight;
         let margin = this._placementMargin;
-        let right = parentWidth - this._width - margin;
-        let center = parentWidth / 2 - this._width / 2;
-        let middle = parentHeight / 2 - this._height / 2;
-        let bottom = parentHeight - this._height - margin;
+        let right = windowWidth - this._width - margin;
+        let center = windowWidth / 2 - this._width / 2;
+        let middle = windowHeight / 2 - this._height / 2;
+        let bottom = windowHeight - this._height - margin;
         if (this._placement) {
             switch (+this._placement) {
                 case WindowPlacement.TopLeft:
