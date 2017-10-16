@@ -13,6 +13,7 @@ export default class HorizontalLayout extends Component {
         super(element);
         this.resetChildren();
         this.registerEvent('init', () => { return this.init() });
+        this.setAnimator(null);
     }
 
     /**

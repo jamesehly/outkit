@@ -15,6 +15,7 @@ export default class VerticalLayout extends Component {
         super(element);
         this.resetChildren();
         this.registerEvent('init', () => { return this.init() });
+        this.setAnimator(null);
     }
 
     /**
