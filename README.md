@@ -1,5 +1,39 @@
-# OUTKIT
+# Outkit
 
-Today there are a myriad of CSS and JavaScript frameworks that will practically build a website for you.  The result is that your site ends up looking and working just like any site built with those frameworks.  Outkit aims to be different, and while there are themes and defaults, its real power lies in how it allows components to work and talk together.  Think of Outkit as more of a component developing toolkit where you can mix and match the components to build the UX you want, rather than something prescribed for you.  If you are versed in JavaScript or TypeScript, writing Outkit components is a breeze.
+Outkit is a javascript library for creating UI components that communicate. You
+can use the growing library of components or easily create your own custom UI
+components. _It's as powerful as your imagination._
 
-Outkit is still very much in alpha so look for more to come.
+
+## Quick Start
+
+To use Outkit from the precompiled library, simply include this script tag in
+your document.
+
+```html
+<script src='https://unpkg.com/outkit@0.2.6/dist/outkit.min.js' type='text/javscript'></script>
+```
+
+Then, in your own script, instantiate outkit objects using the global outkit
+variable.
+
+```javascript
+var myLayout = new outkit.HorizontalLayout("#my-layout-element");
+```
+
+## Why was Outkit created?
+Outkit was created to aid UI developers in creating their own user experiences.
+It strikes me as odd that as front-end developers we've often been tasked with
+using premade toolkits because they are readily available and easy to use. This
+sometimes leads to situations where we're sacrificing usability in favor of ease
+of development. Many developers, myself included, tend to shy away from making
+our own components because it's too difficult or too time consuming.
+
+Or, we've developed components in particular frameworks that cannot be easily
+moved to other projects. And obviously, creativity suffers if websites are made
+with the same tools, especially when those tools have to do with how a website
+looks and functions . I envisioned a dependency free toolkit that allowed,
+components to be automatically animated when they have changes in state, a way
+for components to be composed in relationships, and a way for them to relay
+infomation to one another so that the various parts could function as a whole.
+Outkit was born out of these ideas.
