@@ -41,5 +41,8 @@ export declare class Component implements IComponent {
     relay(message: string): Promise<any>;
     merge(newState: any, oldState: any): State;
     render(newState: State): Promise<State>;
+    private isAnimatedStyle(name);
+    private changeClassName(newClass, oldClass);
+    private setStaticProperties(newState, oldState, isInitial);
     step: (delta: number, args: any[]) => void;
 }

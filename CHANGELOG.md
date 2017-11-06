@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/jamesehly/outkit/compare/v1.0.1...v1.0.2) (2017-11-06)
+
+
+### Bug Fixes
+
+* **component:** make px the default unit for inital values ([54215d1](https://github.com/jamesehly/outkit/commit/54215d1))
+* **layout:** fix animation bug ([d211136](https://github.com/jamesehly/outkit/commit/d211136))
+* **layout:** make HorizontalLayout overflow hidden by default ([5843c14](https://github.com/jamesehly/outkit/commit/5843c14))
+* **readme:** add development documentation to readme file ([ba91f0a](https://github.com/jamesehly/outkit/commit/ba91f0a))
+* **readme:** work on readme content ([ee016e4](https://github.com/jamesehly/outkit/commit/ee016e4))
+* **window:** fix height not set bug ([91017dc](https://github.com/jamesehly/outkit/commit/91017dc))
+* **window:** make window positioning be relative to to browser window ([0b1c69e](https://github.com/jamesehly/outkit/commit/0b1c69e))
+
+
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/jamesehly/outkit/compare/v1.0.0...v1.0.1) (2017-10-08)
 
