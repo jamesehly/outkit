@@ -40,7 +40,7 @@ export class Component implements IComponent {
             return;
         }
         this.setElement(el);
-        this._state = null; 
+        this._state = null;
         if (typeof this._animator !== 'undefined' &&
             this._animator !== null &&
             typeof this._animator.setStep !== 'undefined' &&
@@ -152,29 +152,11 @@ export class Component implements IComponent {
                 return;
             }
 
-            if (newState.stateClassName && newState.stateClassName != oldState.stateClassName) {
-                ElementHelper.changeClass(this._element, newState.stateClassName, oldState.stateClassName);
-            }
+            this.changeClassName(newState.stateClassName, oldState.stateClassName);
+            this.changeClassName(newState.okClassName, oldState.okClassName);
+            this.setStaticProperties(newState, oldState, isInitial);
 
-            if (newState.okClassName && newState.okClassName != oldState.okClassName) {
-                ElementHelper.changeClass(this._element, newState.okClassName, oldState.okClassName);
-            }
-
-            // Loop through non animatable properties on style and set them
-            for (let name in newState.style) {
-                if (this._animator && (State.animated('style.' + name) && newState.style[name] !== null) && !isInitial)
-                    continue;
-
-                let ns = newState.style[name];
-                let os = oldState.style[name];
-
-                if (ns === os)
-                    continue;
-
-                this._element.style[name] = ns;
-            }
-
-            // Initial state
+            // Exit here if we are in the inital state
             if (isInitial) {
                 this._logger.log(`[Initial State][#${this._element.id}]:  ${JSON.stringify(newState)} ]`);
                 this._state = newState;
@@ -198,6 +180,52 @@ export class Component implements IComponent {
             this._state = newState;
             resolve(newState);
         });
+    }
+
+    /**
+     * Returns true if name is a style that can be animated
+     * @param name style name
+     */
+    private isAnimatedStyle(name: string): boolean {
+        return State.animated('style.' + name);
+    }
+
+    /**
+     * Sets the new class name if it is different from the old class name
+     * @param newClass string
+     * @param oldClass string
+     */
+    private changeClassName(newClass: string, oldClass: string): void {
+        if (newClass && newClass != oldClass) {
+            ElementHelper.changeClass(this._element, newClass, oldClass);
+        }
+    }
+
+    /**
+     * Sets the static properties of the element. Static properties are:
+     * 1. All properties if an animator isn't present
+     * 2. Styles that are not animated
+     * 3. All properties if this is the initial setup
+     * @param newState State
+     * @param oldState State  
+     */
+    private setStaticProperties(newState: State, oldState: State, isInitial: boolean): void {
+        // Loop through non animatable properties on style and set them
+        for (let name in newState.style) {
+            if (this._animator && (this.isAnimatedStyle(name) && newState.style[name] !== null) && !isInitial)
+                continue; 
+
+            let ns = newState.style[name];
+            let os = oldState.style[name];
+
+            if (ns === os)
+                continue;
+
+            if (State.animated('style.' + name) && !ns.match(/%|px$/))
+                ns = ns + 'px';
+
+            this._element.style[name] = ns;
+        }
     }
 
     public step = (delta: number, args: any[]) => {
@@ -226,4 +254,3 @@ export class Component implements IComponent {
         }
     }
 }
-

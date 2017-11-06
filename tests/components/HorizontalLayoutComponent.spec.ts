@@ -86,4 +86,26 @@ describe('HorizontalLayout Tests', () => {
             done();
         })
     });
+
+    it('should default data size to use px', (done) => {
+        //Arrange
+        pe.style.width = '1000px';
+        pe.style.height = '500px';
+
+        c1.setAttribute('data-size', '100');
+        c3.setAttribute('data-size', '100');
+
+        //Act
+        sut.relay('init').then(() => {
+            let children = sut.getChildren();
+            expect(children[0].getElement().offsetWidth).toBe(100);
+            expect(children[1].getElement().offsetWidth).toBe(800);
+            expect(children[2].getElement().offsetWidth).toBe(100);
+
+            expect(children[0].getElement().offsetHeight).toBeCloseTo(500, 1);
+            expect(children[1].getElement().offsetHeight).toBeCloseTo(500, 1);
+            expect(children[2].getElement().offsetHeight).toBeCloseTo(500, 1);
+            done();
+        })
+    });
 });
